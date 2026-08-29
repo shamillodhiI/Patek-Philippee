@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TIME POINT — Luxury Watch Experience</title>
+<script>
+(function(){
+  try {
+    var saved = localStorage.getItem('T-theme');
+    if (saved === 'dark' || saved === 'light') {
+      document.documentElement.setAttribute('data-theme', saved);
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  } catch(e) {}
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+<style>
+:root{--dark:#121212;--leather:#8B4513;--accent:#D4AF37;--bg:#FDFCFB;--white:#FFFFFF;--grey:#6B7280;--light-grey:#E5E7EB;--radius:14px;--header-bg:rgba(255,255,255,0.96);--surface-alpha:rgba(255,255,255,0.95);--shadow-soft:rgba(0,0,0,0.06);}
+html[data-theme="dark"]{--dark:#F2F0ED;--leather:#D99C5B;--accent:#E8C468;--bg:#121212;--white:#1E1E1E;--grey:#9B9B9F;--light-grey:#2E2E2E;--header-bg:rgba(18,18,18,0.92);--surface-alpha:rgba(30,30,30,0.9);--shadow-soft:rgba(0,0,0,0.35);}
+*{box-sizing:border-box;}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{margin:0;background:var(--bg);color:var(--dark);font-family:'Plus Jakarta Sans',sans-serif;overflow-x:hidden;width:100%;transition:background 0.4s ease,color 0.4s ease;}
+img{max-width:100%;height:auto;display:block;}
+h1,h2,h3{font-family:'Playfair Display',serif;margin-top:0;}
+a{text-decoration:none;color:inherit;transition:0.3s;}
+button{cursor:pointer;border:none;font-family:inherit;transition:0.3s;touch-action:manipulation;}
+input,select,textarea{width:100%;padding:14px;border:1px solid var(--light-grey);border-radius:8px;margin-bottom:15px;font-family:inherit;font-size:15px;transition:0.3s;background:var(--white);color:var(--dark);}
+input:focus,select:focus,textarea:focus{border-color:var(--leather);outline:none;box-shadow:0 0 0 4px rgba(139,69,19,0.1);}
+
+header{background:var(--header-bg);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);position:sticky;top:0;z-index:1000;border-bottom:1px solid var(--light-grey);width:100%;transition:background 0.4s ease,border-color 0.4s ease;}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:15px 5%;max-width:1400px;margin:0 auto;width:100%;}
+.brand-container{display:flex;align-items:center;gap:12px;cursor:pointer;}
+.logo-circle{width:48px;height:48px;background:var(--leather);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;border:2px solid var(--accent);transition:0.5s;flex-shrink:0;}
+.logo-text{font-size:20px;font-weight:800;color:var(--leather);letter-spacing:0.5px;transition:0.4s;white-space:nowrap;}
+.brand-container:hover .logo-circle{transform:rotate(360deg) scale(1.08);background:var(--dark);}
+.brand-container:hover .logo-text{color:var(--dark);transform:translateX(4px);}
+
+.nav-links{display:flex;gap:24px;list-style:none;font-size:13px;font-weight:700;text-transform:uppercase;margin:0;padding:0;}
+.nav-links a{position:relative;transition:0.3s;display:inline-block;padding:4px 0;}
+.nav-links a:hover{color:var(--leather);transform:translateY(-2px);}
+.nav-links a::after{content:'';position:absolute;width:0;height:2px;bottom:0;left:0;background-color:var(--leather);transition:0.3s;}
+.nav-links a:hover::after{width:100%;}
+
+.nav-actions{display:flex;gap:12px;align-items:center;}
+.theme-toggle-btn{background:var(--white);border:1px solid var(--light-grey);width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:0.3s;flex-shrink:0;}
+.theme-toggle-btn:hover{border-color:var(--leather);transform:scale(1.08) rotate(15deg);}
+.theme-toggle-btn svg{color:var(--leather);transition:0.3s;}
+.theme-toggle-btn .icon-moon{display:none;}
+html[data-theme="dark"] .theme-toggle-btn .icon-sun{display:none;}
+html[data-theme="dark"] .theme-toggle-btn .icon-moon{display:block;}
+.hamburger-btn{display:none;background:none;width:42px;height:42px;align-items:center;justify-content:center;flex-direction:column;gap:5px;border-radius:8px;padding:8px;}
+.hamburger-btn span{display:block;width:22px;height:2px;background:var(--dark);transition:0.3s;}
+.hamburger-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger-btn.open span:nth-child(2){opacity:0;}
+.hamburger-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+.hero{min-height:80vh;display:flex;align-items:center;justify-content:space-between;padding:60px 8%;background:radial-gradient(circle at 80%, #f3efea 0%, var(--bg) 60%);overflow:hidden;gap:40px;max-width:1400px;margin:0 auto;}
+.hero-content{flex:1;max-width:600px;}
+.hero h1{font-size:clamp(32px,5vw,62px);line-height:1.15;margin-bottom:20px;transition:0.5s;cursor:default;}
+.hero h1:hover{transform:scale(1.02) skewX(-1deg);color:var(--leather);}
+.hero h1 em{color:var(--leather);font-style:italic;display:inline-block;transition:0.5s;}
+.hero h1:hover em{transform:rotate(-3deg) scale(1.05);}
+.hero p{font-size:clamp(15px,2vw,18px);color:var(--grey);margin-bottom:28px;line-height:1.6;}
+
+.hero-visual{position:relative;width:400px;height:400px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.magic-circle{width:360px;height:360px;border-radius:50%;overflow:hidden;position:relative;border:6px solid var(--white);box-shadow:0 25px 50px rgba(0,0,0,0.12);cursor:crosshair;}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease-in-out;}
+.slide.active{opacity:1;}
+.slide img{width:100%;height:100%;object-fit:cover;transition:transform 0.2s ease-out;}
+
+section{padding:80px 8%;max-width:1400px;margin:0 auto;width:100%;}
+.section-title{text-align:center;margin-bottom:45px;}
+.section-title h2{font-size:clamp(28px,4vw,42px);margin:0;}
+
+.about-container{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;}
+.about-text-content h3{font-size:clamp(26px,3.5vw,36px);color:var(--leather);margin-bottom:15px;transition:0.4s;}
+.about-text-content p{font-size:16px;line-height:1.8;color:var(--grey);margin-bottom:25px;transition:0.4s;}
+.about-text-content:hover h3{transform:translateX(6px);}
+
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px;}
+.stat-card{background:var(--white);padding:18px 12px;border-radius:15px;text-align:center;box-shadow:0 10px 30px var(--shadow-soft);border:1px solid var(--light-grey);transition:0.4s;}
+.stat-card:hover{transform:translateY(-6px);border-color:var(--leather);background:var(--leather);color:white;}
+.stat-card h4{font-size:clamp(20px,2.5vw,26px);margin:0 0 4px 0;}
+.stat-card span{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;}
+
+.about-visual-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;position:relative;}
+.about-img-box{width:100%;height:220px;border-radius:18px;overflow:hidden;box-shadow:0 15px 35px rgba(0,0,0,0.08);transition:0.5s;}
+.about-img-box img{width:100%;height:100%;object-fit:cover;transition:0.5s;}
+.about-img-box:hover{transform:scale(1.04) rotate(1deg);z-index:10;}
+.about-img-box:hover img{transform:scale(1.12);filter:brightness(0.9);}
+.about-img-box:nth-child(2){margin-top:25px;}
+.about-img-box:nth-child(3){margin-top:-25px;}
+
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:25px;}
+.card{position:relative;background:var(--white);border-radius:var(--radius);padding:15px;transition:0.4s;border:1px solid transparent;text-align:center;display:flex;flex-direction:column;justify-content:space-between;}
+.card:hover{transform:translateY(-8px);border-color:var(--leather);box-shadow:0 18px 36px var(--shadow-soft);}
+.card-img{position:relative;width:100%;aspect-ratio:1;border-radius:8px;overflow:hidden;margin-bottom:12px;cursor:pointer;background:var(--light-grey);}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:0.4s;}
+.card:hover .card-img img{transform:scale(1.06);}
+.card h3{font-size:15px;font-weight:700;margin:8px 0 4px 0;line-height:1.3;}
+.price{font-size:18px;font-weight:800;color:var(--leather);margin:6px 0;display:block;}
+.btn-main{background:var(--dark);color:var(--bg);padding:11px 20px;border-radius:8px;font-weight:600;font-size:14px;width:100%;display:inline-flex;align-items:center;justify-content:center;gap:8px;}
+.btn-main:hover{background:var(--leather);color:white;transform:translateY(-1px);}
+
+.heart-btn{position:absolute;top:22px;right:22px;background:var(--surface-alpha);border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;box-shadow:0 4px 12px rgba(0,0,0,0.12);transition:0.3s;border:none;color:var(--dark);}
+.heart-btn:hover{transform:scale(1.15);background:var(--white);}
+.heart-btn.active svg{fill:#e63946;stroke:#e63946;}
+
+.demand-badge{display:inline-flex;align-items:center;gap:4px;background:#fff0f0;color:#d90429;font-size:11px;font-weight:700;padding:3px 8px;border-radius:20px;border:1px solid #fecdd3;}
+.sold-badge{display:inline-flex;align-items:center;gap:4px;background:#f0fdf4;color:#15803d;font-size:11px;font-weight:700;padding:3px 8px;border-radius:20px;border:1px solid #bbf7d0;}
+.rating-stars{display:flex;align-items:center;justify-content:center;gap:3px;color:#f59e0b;font-weight:700;font-size:13px;}
+
+.collection-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.collection-card{position:relative;height:380px;border-radius:var(--radius);overflow:hidden;cursor:pointer;background:var(--light-grey);}
+.collection-card img{width:100%;height:100%;object-fit:cover;transition:0.5s;}
+.collection-card:hover img{transform:scale(1.08);}
+.collection-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.75),transparent);display:flex;align-items:flex-end;padding:25px;color:white;}
+.collection-overlay h3{font-size:24px;margin:0;}
+#collectionViewer{display:none;}
+.back-btn{margin-bottom:25px;display:inline-flex;align-items:center;gap:8px;color:var(--leather);font-weight:700;cursor:pointer;font-size:15px;}
+
+@keyframes shipFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+.shipment-info{background:var(--white);display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:25px;border-radius:var(--radius);padding:40px;box-shadow:0 10px 40px var(--shadow-soft);}
+.ship-item{text-align:center;padding:20px;border-radius:15px;transition:0.4s;animation:shipFloat 4s ease-in-out infinite;}
+.ship-item:hover{transform:scale(1.03);background:var(--bg);}
+.ship-item svg{color:var(--leather);margin-bottom:12px;}
+.ship-item h4{font-size:18px;margin:0 0 6px 0;font-weight:700;}
+.ship-item p{margin:0;color:var(--grey);font-size:14px;}
+
+#contact{background:linear-gradient(180deg,var(--bg),var(--white));}
+.contact-container{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:center;background:var(--white);padding:40px;border-radius:20px;box-shadow:0 20px 50px var(--shadow-soft);border:1px solid rgba(139,69,19,0.12);}
+.contact-info{padding:20px;border-radius:15px;transition:0.4s;}
+.contact-info:hover{background:var(--bg);transform:translateY(-3px);}
+.contact-info h3{font-size:26px;color:var(--leather);margin-bottom:15px;}
+.contact-info p{margin-bottom:12px;font-size:15px;}
+
+.profile-section{background:var(--white);padding:80px 8%;border-top:1px solid var(--light-grey);max-width:1400px;margin:0 auto;transition:background 0.4s ease,border-color 0.4s ease;}
+.profile-container{display:grid;grid-template-columns:1fr 1.4fr;gap:50px;align-items:center;cursor:pointer;}
+.profile-image-wrapper{perspective:1000px;}
+.profile-img-3d{width:100%;height:480px;object-fit:cover;border-radius:15px;box-shadow:0 20px 40px rgba(0,0,0,0.15);transition:0.6s;}
+.profile-image-wrapper:hover .profile-img-3d{transform:rotateY(10deg) scale(1.02);}
+.profile-text h3{font-size:clamp(26px,3.5vw,36px);color:var(--leather);margin-bottom:12px;}
+.xp-tag{display:inline-block;background:var(--bg);color:var(--leather);font-weight:700;font-size:12px;padding:4px 12px;border-radius:20px;margin-bottom:12px;text-transform:uppercase;border:1px solid var(--light-grey);}
+.profile-details{max-height:0;overflow:hidden;transition:0.8s ease;opacity:0;}
+.profile-container.active .profile-details{max-height:1000px;opacity:1;margin-top:20px;}
+
+.bags-promo-slider{background:var(--bg);padding:70px 0;overflow:hidden;width:100%;transition:background 0.4s ease;}
+.bags-promo-slider h2{text-align:center;margin-bottom:40px;font-size:clamp(26px,4vw,38px);color:var(--leather);padding:0 5%;}
+.bags-slider{overflow:hidden;width:100%;}
+.bags-track{display:flex;gap:25px;width:max-content;animation:bagSlide 30s linear infinite;}
+.bags-slider:hover .bags-track{animation-play-state:paused;}
+.bag-slide{width:320px;height:400px;border-radius:18px;overflow:hidden;position:relative;flex-shrink:0;box-shadow:0 15px 35px rgba(0,0,0,0.1);cursor:pointer;transition:0.4s;}
+.bag-slide img{width:100%;height:100%;object-fit:cover;transition:0.7s;}
+.bag-slide:hover img{transform:scale(1.1);}
+.bag-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.75),rgba(0,0,0,0.15));display:flex;flex-direction:column;justify-content:flex-end;padding:24px;color:#fff;}
+.bag-overlay h3{margin:0;font-size:22px;}
+.bag-overlay p{margin:6px 0 0 0;color:#f5f5f5;font-size:14px;}
+@keyframes bagSlide{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+.reviews-section{background:var(--white);padding:70px 0;overflow:hidden;width:100%;transition:background 0.4s ease;}
+.reviews-section h2{text-align:center;margin-bottom:10px;font-size:clamp(26px,4vw,38px);color:var(--leather);padding:0 5%;}
+.reviews-subtitle{text-align:center;color:var(--grey);margin:0 auto 40px auto;padding:0 5%;font-size:15px;max-width:600px;}
+.reviews-slider{overflow:hidden;width:100%;}
+.reviews-track{display:flex;gap:25px;width:max-content;animation:reviewSlide 45s linear infinite;}
+.reviews-slider:hover .reviews-track{animation-play-state:paused;}
+.review-card{width:340px;flex-shrink:0;background:var(--bg);border:1px solid var(--light-grey);border-radius:18px;padding:28px;box-shadow:0 10px 30px var(--shadow-soft);transition:0.4s;display:flex;flex-direction:column;}
+.review-card:hover{transform:translateY(-6px);border-color:var(--leather);}
+.review-stars{color:var(--accent);font-size:16px;margin-bottom:14px;letter-spacing:2px;}
+.review-text{font-size:14px;line-height:1.7;color:var(--dark);margin-bottom:22px;flex:1;}
+.review-author{display:flex;align-items:center;gap:12px;}
+.review-avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;color:#fff;flex-shrink:0;}
+.review-author-info h4{margin:0;font-size:14px;font-weight:700;color:var(--dark);}
+.review-author-info span{font-size:12px;color:var(--grey);}
+@keyframes reviewSlide{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+.main-footer{background:#0a0a0a;color:white;padding:70px 8% 30px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:35px;border-bottom:1px solid #222;padding-bottom:45px;max-width:1400px;margin:0 auto;}
+.footer-col h4{color:var(--accent);margin-bottom:20px;font-size:15px;text-transform:uppercase;letter-spacing:0.5px;}
+.footer-links{list-style:none;padding:0;margin:0;}
+.footer-links li{margin-bottom:12px;}
+.footer-links a{color:#888;transition:0.3s;font-size:14px;}
+.footer-links a:hover{color:white;}
+.footer-links a.social-link{display:inline-flex;align-items:center;gap:8px;}
+.footer-links a.social-link svg{flex-shrink:0;transition:0.3s;}
+.footer-links a.social-link:hover svg{transform:scale(1.15);}
+.footer-bottom{padding-top:25px;text-align:center;color:#888;font-size:13px;max-width:1400px;margin:0 auto;}
+
+.drawer{position:fixed;top:0;right:0;height:100%;width:440px;max-width:100vw;background:var(--white);z-index:2000;transform:translateX(100%);transition:0.4s ease;padding:25px;display:flex;flex-direction:column;box-shadow:-15px 0 40px rgba(0,0,0,0.15);color:var(--dark);}
+.drawer.open{transform:translateX(0);}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1500;display:none;backdrop-filter:blur(4px);}
+.overlay.open{display:block;}
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:var(--leather);color:white;padding:12px 30px;border-radius:50px;font-weight:600;display:none;z-index:3000;text-align:center;max-width:90%;box-shadow:0 10px 25px rgba(0,0,0,0.2);font-size:14px;}
+
+.checkout-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;border-bottom:1px solid var(--light-grey);padding-bottom:12px;}
+.checkout-header h3{margin:0;font-size:20px;}
+.form-group-title{font-size:12px;text-transform:uppercase;color:var(--leather);font-weight:800;margin-bottom:10px;border-bottom:1px solid var(--light-grey);padding-bottom:4px;letter-spacing:0.5px;}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.payment-method-card{border:2px solid var(--light-grey);padding:12px;border-radius:8px;margin-bottom:10px;cursor:pointer;display:flex;gap:10px;align-items:center;}
+.payment-method-card.selected{border-color:var(--leather);background:var(--bg);}
+
+.product-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.65);backdrop-filter:blur(5px);z-index:2500;display:none;align-items:center;justify-content:center;padding:20px;}
+.product-modal-overlay.open{display:flex;}
+.product-modal-card{background:var(--white);color:var(--dark);width:100%;max-width:680px;border-radius:16px;overflow:hidden;display:grid;grid-template-columns:1fr 1.1fr;position:relative;box-shadow:0 25px 50px rgba(0,0,0,0.25);max-height:90vh;}
+
+.qty-stepper{display:flex;align-items:center;gap:0;border:1px solid var(--light-grey);border-radius:8px;overflow:hidden;width:fit-content;margin-bottom:16px;}
+.qty-stepper button{background:var(--bg);color:var(--leather);width:36px;height:36px;font-size:18px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+.qty-stepper button:hover{background:var(--leather);color:white;}
+.qty-stepper span{width:40px;text-align:center;font-weight:700;font-size:15px;}
+.wishlist-item-actions{display:flex;gap:6px;align-items:center;}
+
+
+/* ===== RESPONSIVE MEDIA QUERIES ===== */
+@media (max-width: 1200px) {
+  .hero{padding:50px 6%;gap:30px;}
+  .hero-visual{width:340px;height:340px;}
+  .magic-circle{width:300px;height:300px;}
+  section{padding:60px 6%;}
+  .footer-grid{grid-template-columns:1.5fr 1fr 1fr 1fr;}
+}
+
+@media (max-width: 992px) {
+  .nav-links{position:fixed;top:76px;left:0;width:100%;background:var(--white);flex-direction:column;gap:0;padding:0;max-height:0;overflow:hidden;transition:0.4s ease;box-shadow:0 10px 25px rgba(0,0,0,0.08);z-index:999;border-bottom:1px solid var(--light-grey);}
+  .nav-links.open{max-height:450px;padding:10px 0;}
+  .nav-links li{width:100%;text-align:center;}
+  .nav-links a{display:block;padding:12px 20px;font-size:14px;}
+  .nav-links a::after{display:none;}
+  .hamburger-btn{display:flex;}
+
+  .hero{flex-direction:column;text-align:center;padding:35px 5% 45px;min-height:auto;gap:25px;}
+  .hero-content{max-width:100%;order:2;}
+  .hero-visual{order:1;margin:0 auto;width:200px;height:200px;}
+  .magic-circle{width:100%;height:100%;}
+
+  .about-container,.contact-container,.profile-container{grid-template-columns:1fr;gap:30px;}
+  .about-visual-grid{margin-top:10px;grid-template-columns:repeat(2,1fr);gap:12px;}
+  .about-img-box:nth-child(2),.about-img-box:nth-child(3){margin-top:0;}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:30px;}
+  .product-modal-card{grid-template-columns:1fr;max-height:90vh;overflow-y:auto;}
+  .product-modal-card > div:first-child{min-height:220px;}
+}
+
+@media (max-width: 768px) {
+  body { overflow-x: hidden; width: 100%; max-width: 100vw; }
+  .nav{padding:12px 4%;}
+  .logo-text{font-size:16px;}
+  .logo-circle{width:40px;height:40px;font-size:15px;}
+  section{padding:30px 4%;max-width:100vw;overflow-x:hidden;}
+ 
+  .hero{padding:25px 4% 35px;gap:20px;}
+  .hero h1{font-size:28px;margin-bottom:12px;}
+  .hero p{font-size:14px;margin-bottom:18px;}
+  .hero-visual{width:180px;height:180px;}
+
+  /* Crafting a Legacy - 2 on top, 2 on bottom */
+  .about-visual-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px;}
+  .about-img-box{height:160px;width:100%;border-radius:12px;}
+  .about-img-box:nth-child(2),.about-img-box:nth-child(3){margin-top:0;}
+
+  /* Collections - 2x2 grid on mobile */
+  .collection-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
+  .collection-card{height:180px;width:100%;border-radius:10px;}
+  .collection-overlay{padding:10px 6px;justify-content:center;text-align:center;}
+  .collection-overlay h3{font-size:13px;}
+
+  /* Products Grid - Clean 2-column responsive layout for mobile */
+  .products-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+  .card{padding:10px;border-radius:10px;width:100%;}
+  .card h3{font-size:12px;margin:5px 0 2px 0;line-height:1.2;height:28px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+  .price{font-size:14px;margin:4px 0;}
+  .demand-badge,.sold-badge{font-size:9px;padding:2px 5px;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis;}
+  .rating-stars{font-size:11px;}
+  .btn-main{padding:8px 4px;font-size:11px;border-radius:6px;width:100%;}
+  .card button:last-child{padding:0 6px;font-size:11px;border-radius:6px;}
+  .heart-btn{width:28px;height:28px;top:10px;right:10px;}
+  .heart-btn svg{width:14px;height:14px;}
+
+  .about-stats{grid-template-columns:repeat(3,1fr);gap:8px;}
+  .stat-card{padding:12px 6px;}
+  .stat-card h4{font-size:18px;}
+  .stat-card span{font-size:10px;}
+  .shipment-info{grid-template-columns:1fr;padding:20px;gap:15px;}
+  .contact-container{padding:20px;}
+  .profile-img-3d{height:260px;}
+  .drawer{width:100%;padding:20px;}
+  .bag-slide{width:220px;height:280px;}
+  .bag-overlay h3{font-size:16px;}
+  .review-card{width:280px;padding:22px;}
+
+  /* Footer Responsive Styles */
+  .main-footer{padding:35px 4% 20px;}
+  .footer-grid{grid-template-columns:repeat(3, 1fr);text-align:center;gap:20px 8px;padding-bottom:25px;}
+  .footer-col:first-child{grid-column:1 / -1;margin-bottom:10px;}
+  .brand-container{justify-content:center;}
+  .footer-col h4{margin-bottom:10px;font-size:12px;letter-spacing:0;}
+  .footer-links li{margin-bottom:6px;}
+  .footer-links a{font-size:11px;}
+  .footer-links a.social-link{justify-content:center;}
+  .footer-bottom{padding-top:18px;font-size:11px;line-height:1.5;}
+}
+
+@media (max-width: 576px) {
+  .hero{padding:20px 4% 30px;gap:15px;}
+  .hero h1{font-size:24px;margin-bottom:10px;}
+  .hero p{font-size:13px;margin-bottom:14px;}
+  .hero-visual{width:150px;height:150px;}
+
+  .about-stats{grid-template-columns:1fr;}
+  .about-visual-grid{grid-template-columns:repeat(2,1fr);gap:8px;}
+  .about-img-box{height:130px;}
+
+  .collection-grid{grid-template-columns:repeat(2,1fr);gap:6px;}
+  .collection-card{height:150px;}
+  .collection-overlay h3{font-size:11px;}
+
+  .products-grid{grid-template-columns:repeat(2,1fr);gap:8px;}
+  .card{padding:8px 6px;}
+  .card h3{font-size:11px;height:26px;}
+  .price{font-size:13px;}
+  .btn-main{padding:7px 2px;font-size:10px;}
+  .card button:last-child{padding:0 4px;font-size:10px;}
+
+  .grid-2{grid-template-columns:1fr;}
+  .main-footer{padding:30px 4% 18px;}
+  .footer-grid{grid-template-columns:repeat(3, 1fr);text-align:center;gap:18px 6%;padding-bottom:20px;}
+  .footer-col:first-child{grid-column:1 / -1;margin-bottom:8px;}
+  .brand-container{justify-content:center;}
+  .footer-col h4{font-size:11px;margin-bottom:8px;}
+  .footer-links a{font-size:10px;}
+  .footer-bottom{font-size:11px;}
+  .bag-slide{width:180px;height:240px;}
+  .review-card{width:250px;padding:20px;}
+}
+
+@media (max-width: 380px) {
+  .logo-text{display:none;}
+  .hero h1{font-size:23px;}
+  .hero-visual{width:140px;height:140px;}
+
+  .collection-card{flex:0 0 135px !important;min-width:135px !important;height:170px !important;}
+  .card{flex:0 0 145px !important;min-width:145px !important;width:145px !important;}
+  .about-img-box{height:120px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <div class="brand-container" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+      <div class="logo-circle">T</div>
+      <span class="logo-text">Time Point</span>
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#top" onclick="closeNav()">Home</a></li>
+      <li><a href="#about" onclick="closeNav()">About</a></li>
+      <li><a href="#shop" onclick="closeNav()">Shop</a></li>
+      <li><a href="#collections" onclick="closeNav()">Collections</a></li>
+      <li><a href="#shipment" onclick="closeNav()">Shipment</a></li>
+      <li><a href="#contact" onclick="closeNav()">Contact</a></li>
+      <li><a href="#profile" onclick="closeNav()">Profile</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">
+        <svg class="icon-sun" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>
+        <svg class="icon-moon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
+      </button>
+
+      <button onclick="openDrawer('wishlistDrawer')" style="background:none; position:relative; padding:6px;" title="View Favorites">
+        <svg width="26" height="26" fill="none" stroke="var(--leather)" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+        </svg>
+        <span id="wishlistCount" style="position:absolute; top:-3px; right:-3px; background:#d90429; color:white; font-size:10px; font-weight:700; width:18px; height:18px; border-radius:50%; display:flex; align-items:center; justify-content:center;">0</span>
+      </button>
+
+      <button onclick="openDrawer('cartDrawer')" style="background:none; position:relative; padding:6px; color:var(--dark);" title="View Cart">
+        <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+        <span id="cartCount" style="position:absolute; top:-3px; right:-3px; background:var(--leather); color:white; font-size:10px; font-weight:700; width:18px; height:18px; border-radius:50%; display:flex; align-items:center; justify-content:center;">0</span>
+      </button>
+
+      <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleNav()" aria-label="Toggle Navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Precision-Crafted<br><em>Watch</em> Heritage.</h1>
+      <p>Luxury timepieces sourced and serviced at our Multan workshop. We stock authentic Patek Philippe and Aldo watches built to last a generation.</p>
+      <a href="#shop" class="btn-main" style="display:inline-flex; width:auto;">Shop the Collection</a>
+    </div>
+    <div class="hero-visual">
+      <div class="magic-circle" id="magicCircle">
+        <div class="slide active"><img src="https://matrixtimepiece.in/cdn/shop/files/9-A_f9a0de9b-3759-4181-8685-e6206607bbed.jpg?v=1784532836&width=533" class="tilt-img" alt="Watch Store"></div>
+        <div class="slide"><img src="https://matrixtimepiece.in/cdn/shop/files/17-A_05645942-df49-4ecf-b1d6-1d36b6268ced.jpg?v=1784543385&width=533" class="tilt-img" alt="Watchmaking Craft"></div>
+        <div class="slide"><img src="https://matrixtimepiece.in/cdn/shop/files/DD-66.jpg?v=1756208326&width=533" class="tilt-img" alt="Luxury Watch"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-title"><h2>The Horologist Story</h2></div>
+    <div class="about-container">
+      <div class="about-text-content">
+        <h3>Crafting a <em>Legacy</em>.</h3>
+        <p>Born in the heart of Multan, Time Point Store is more than just a brand; it's a tribute to the timeless art of horology. Every watch we curate tells a story of patience, precision, and passion.</p>
+        <div class="about-stats">
+          <div class="stat-card"><h4>100%</h4><span>Authentic Watches</span></div>
+          <div class="stat-card"><h4>Premium</h4><span>Swiss & Japanese Movement</span></div>
+          <div class="stat-card"><h4>Multan</h4><span>Heritage Curated</span></div>
+        </div>
+      </div>
+      <div class="about-visual-grid">
+        <div class="about-img-box"><img src="https://matrixtimepiece.in/cdn/shop/files/15-A_ab458079-5053-47b3-a920-c9ad97b9b828.jpg?v=1772104491&width=533" alt="Detail 1"></div>
+        <div class="about-img-box"><img src="https://matrixtimepiece.in/cdn/shop/files/23-A_2108edf2-04c1-4e5b-841d-59af3406f04c.jpg?v=1772099956&width=533" alt="Detail 2"></div>
+        <div class="about-img-box"><img src="https://matrixtimepiece.in/cdn/shop/files/12-A_71fc0c5e-648c-4915-9cf1-500adcf34301.jpg?v=1784375073&width=533" alt="Detail 3"></div>
+        <div class="about-img-box"><img src="https://matrixtimepiece.in/cdn/shop/files/13-A_f48c1d64-d12b-4c66-9293-cc8aac5cf6b3.jpg?v=1784374000&width=533" alt="Detail 4"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="shop">
+    <div class="section-title"><h2>Premium Timepieces</h2></div>
+    <div class="products-grid" id="productsGrid"></div>
+  </section>
+
+  <section id="collections" style="background: #fdfcfb;">
+    <div id="collectionMain">
+      <div class="section-title"><h2>Our Collections</h2></div>
+      <div class="collection-grid">
+        <div class="collection-card" onclick="openCollection('watches')">
+          <img src="https://matrixtimepiece.in/cdn/shop/files/9-A_f9a0de9b-3759-4181-8685-e6206607bbed.jpg?v=1784532836&width=533" alt="Watches">
+          <div class="collection-overlay"><h3>Luxury Watches</h3></div>
+        </div>
+        <div class="collection-card" onclick="openCollection('geneve')">
+          <img src="https://matrixtimepiece.in/cdn/shop/files/15-A_ab458079-5053-47b3-a920-c9ad97b9b828.jpg?v=1772104491&width=533" alt="Patek Philippe Genève">
+          <div class="collection-overlay"><h3>Patek Philippe Genève</h3></div>
+        </div>
+        <div class="collection-card" onclick="openCollection('straps')">
+          <img src="https://mender.pk/wp-content/uploads/2026/05/IMG_3031-400x400.jpg" alt="Watch Straps">
+          <div class="collection-overlay"><h3>Premium Watch Straps</h3></div>
+        </div>
+        <div class="collection-card" onclick="openCollection('boxes')">
+          <img src="https://mender.pk/wp-content/uploads/2021/01/15-800x800.png" alt="Watch Boxes">
+          <div class="collection-overlay"><h3>Artisan Watch Boxes</h3></div>
+        </div>
+      </div>
+    </div>
+    <div id="collectionViewer">
+      <div class="back-btn" onclick="closeCollection()">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg> Back to Collections
+      </div>
+      <div class="section-title"><h2 id="colTitle">Collection</h2></div>
+      <div class="products-grid" id="collectionGrid"></div>
+    </div>
+  </section>
+
+  <section id="shipment" style="background: white;">
+    <div class="section-title"><h2>Shipping Information</h2></div>
+    <div class="shipment-info">
+      <div class="ship-item">
+        <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+        <h4>Fast Delivery</h4>
+        <p>3-5 working days across Pakistan.</p>
+      </div>
+      <div class="ship-item">
+        <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+        <h4>Secure Packing</h4>
+        <p>Premium dust bags and rigid box.</p>
+      </div>
+      <div class="ship-item">
+        <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+        <h4>Easy Payment</h4>
+        <p>COD, EasyPaisa & Bank Transfer.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews-section" id="reviews">
+    <h2>What Our Customers Say</h2>
+    <p class="reviews-subtitle">Real feedback from real watch lovers across Pakistan.</p>
+    <div class="reviews-slider">
+      <div class="reviews-track">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Ordered a Patek Philippe Geneve Nautilus and I'm blown away by the build quality. Packaging was premium and delivery to Lahore took only 3 days. Highly recommended!"</p>
+          <div class="review-author">
+            <div class="review-avatar" style="background:#8B4513;">AH</div>
+            <div class="review-author-info"><h4>Ahmed Hassan</h4><span>Lahore, Punjab</span></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Bohat achi service! WhatsApp pe order kiya, cash on delivery mili, aur watch bilkul original lagti hai. Joni Baba Store se dobara zaroor lunga."</p>
+          <div class="review-author">
+            <div class="review-avatar" style="background:#2B6CB0;">SF</div>
+            <div class="review-author-info"><h4>Sana Fatima</h4><span>Karachi, Sindh</span></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"The Aldo watch I bought exceeded my expectations for the price. Elegant design, comfortable strap, and it arrived exactly as pictured on the site."</p>
+          <div class="review-author">
+            <div class="review-avatar" style="background:#2F855A;">BK</div>
+            <div class="review-author-info"><h4>Bilal Khan</h4><span>Multan, Punjab</span></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★☆</div>
+          <p class="review-text">"Great collection of Patek Philippe Genève models — hard to find this variety anywhere else in Pakistan. Customer support answered all my questions promptly."</p>
+          <div class="review-author">
+            <div class="review-avatar" style="background:#9B2C2C;">MR</div>
+            <div class="review-author-info"><h4>Maria Riaz</h4><span>Islamabad</span></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Watch box collection is a lovely touch — ordered a leather travel case along with my watch. Everything came neatly packed. Very trustworthy store."</p>
+          <div class="review-author">
+            <div class="review-avatar" style="background:#6B46C1;">UJ</div>
+            <div class="review-author-info"><h4>Usman Javed</h4><span>Faisalabad, Punjab</span></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Site is super easy to browse, dark mode is a nice touch too! Got my Nautilus watch strap exactly as described. Will be ordering again soon."</p>
+          <div class="review-author">
+            <div class="review-avatar" style="background:#D4AF37;">HZ</div>
+            <div class="review-author-info"><h4>Hina Zaidi</h4><span>Rawalpindi, Punjab</span></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Best watch store I've dealt with online in Pakistan. Fast replies on WhatsApp, fair prices, and the quality genuinely feels premium."</p>
+          <div class="review-author">
+            <div class="review-avatar" style="background:#2C5282;">FA</div>
+            <div class="review-author-info"><h4>Fahad Ali</h4><span>Multan, Punjab</span></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★☆</div>
+          <p class="review-text">"Loved the Golden Ellipse model! Shipping took a bit longer than expected but the team kept me updated throughout. Worth the wait."</p>
+          <div class="review-author">
+            <div class="review-avatar" style="background:#B7791F;">NT</div>
+            <div class="review-author-info"><h4>Nimra Tariq</h4><span>Sialkot, Punjab</span></div>
+          </div>
+        </div>
+        <!-- Duplicate set for seamless infinite loop -->
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Ordered a Patek Philippe Geneve Nautilus and I'm blown away by the build quality. Packaging was premium and delivery to Lahore took only 3 days. Highly recommended!"</p>
+          <div class="review-author">
+            <div class="review-avatar" style="background:#8B4513;">AH</div>
+            <div class="review-author-info"><h4>Ahmed Hassan</h4><span>Lahore, Punjab</span></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Bohat achi service! WhatsApp pe order kiya, cash on delivery mili, aur watch bilkul original lagti hai. Joni Baba Store se dobara zaroor lunga."</p>
+          <div class="review-author">
+            <div class="review-avatar" style="background:#2B6CB0;">SF</div>
+            <div class="review-author-info"><h4>Sana Fatima</h4><span>Karachi, Sindh</span></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"The Aldo watch I bought exceeded my expectations for the price. Elegant design, comfortable strap, and it arrived exactly as pictured on the site."</p>
+          <div class="review-author">
+            <div class="review-avatar" style="background:#2F855A;">BK</div>
+            <div class="review-author-info"><h4>Bilal Khan</h4><span>Multan, Punjab</span></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★☆</div>
+          <p class="review-text">"Great collection of Patek Philippe Genève models — hard to find this variety anywhere else in Pakistan. Customer support answered all my questions promptly."</p>
+          <div class="review-author">
+            <div class="review-avatar" style="background:#9B2C2C;">MR</div>
+            <div class="review-author-info"><h4>Maria Riaz</h4><span>Islamabad</span></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Watch box collection is a lovely touch — ordered a leather travel case along with my watch. Everything came neatly packed. Very trustworthy store."</p>
+          <div class="review-author">
+            <div class="review-avatar" style="background:#6B46C1;">UJ</div>
+            <div class="review-author-info"><h4>Usman Javed</h4><span>Faisalabad, Punjab</span></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Site is super easy to browse, dark mode is a nice touch too! Got my Nautilus watch strap exactly as described. Will be ordering again soon."</p>
+          <div class="review-author">
+            <div class="review-avatar" style="background:#D4AF37;">HZ</div>
+            <div class="review-author-info"><h4>Hina Zaidi</h4><span>Rawalpindi, Punjab</span></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Best watch store I've dealt with online in Pakistan. Fast replies on WhatsApp, fair prices, and the quality genuinely feels premium."</p>
+          <div class="review-author">
+            <div class="review-avatar" style="background:#2C5282;">FA</div>
+            <div class="review-author-info"><h4>Fahad Ali</h4><span>Multan, Punjab</span></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★☆</div>
+          <p class="review-text">"Loved the Golden Ellipse model! Shipping took a bit longer than expected but the team kept me updated throughout. Worth the wait."</p>
+          <div class="review-author">
+            <div class="review-avatar" style="background:#B7791F;">NT</div>
+            <div class="review-author-info"><h4>Nimra Tariq</h4><span>Sialkot, Punjab</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-title"><h2>Get in Touch</h2></div>
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>Boutique Info</h3>
+        <p><strong>Location:</strong> Sabzar metro station  near shell pump MULTAN </p>
+        <p><strong>WhatsApp:</strong> +92 313 6024723</p>
+        <p><strong>Experience:</strong> Trusted Watch Curation Since 2014.</p>
+      </div>
+      <form onsubmit="event.preventDefault(); alert('Message Sent!'); this.reset();">
+        <h4 style="margin-top:0; margin-bottom:15px;">Send us a Message</h4>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="4" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn-main">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="profile" class="profile-section">
+    <div class="section-title"><h2>The Horologist Profile</h2></div>
+    <div class="profile-container" onclick="this.classList.toggle('active')">
+      <div class="profile-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="Owner" class="profile-img-3d">
+      </div>
+      <div class="profile-text">
+        <span class="xp-tag">Master of Horology since 2014</span>
+        <h3>The Soul Behind Time Point</h3>
+        <p>My journey into watch curation began in <strong>2014</strong>. What started as a small personal passion for fine timepieces soon became a lifelong commitment to quality and authenticity in the heart of Multan.</p>
+        <p style="margin-top:20px; color:var(--leather); font-weight:700;">Click to read our full story & experience ↓</p>
+        <div class="profile-details">
+          <p>For more than a decade, I have focused on sourcing and servicing authentic watches—a discipline that demands patience and an eye for detail no machine can replicate. Every timepiece at Joni Baba Store is hand-selected and verified to ensure it carries the spirit of true craftsmanship.</p>
+          <p style="margin-top:15px;">Today, we stand as a symbol of heritage in Pakistan. Our goal is to provide watches that don't just keep time, but develop a beautiful story with every year you wear them.</p>
+          <p style="margin-top:10px;"><strong>Expertise:</strong> Watch Authentication, Movement Servicing, Bespoke Sourcing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bags-promo-slider">
+    <h2>Explore Our Signature Watches</h2>
+    <div class="bags-slider">
+      <div class="bags-track">
+        <div class="bag-slide">
+          <img src="https://matrixtimepiece.in/cdn/shop/files/9-A_f9a0de9b-3759-4181-8685-e6206607bbed.jpg?v=1784532836&width=533">
+          <div class="bag-overlay"><h3>Patek Philippe</h3><p>Haute Horlogerie Excellence</p></div>
+        </div>
+        <div class="bag-slide">
+          <img src="https://matrixtimepiece.in/cdn/shop/files/17-A_05645942-df49-4ecf-b1d6-1d36b6268ced.jpg?v=1784543385&width=533">
+          <div class="bag-overlay"><h3>Aldo</h3><p>Modern Everyday Style</p></div>
+        </div>
+        <div class="bag-slide">
+          <img src="https://matrixtimepiece.in/cdn/shop/files/DD-66.jpg?v=1756208326&width=533">
+          <div class="bag-overlay"><h3>Patek Philippe</h3><p>Timeless Swiss Luxury</p></div>
+        </div>
+        <div class="bag-slide">
+          <img src="https://matrixtimepiece.in/cdn/shop/files/Untitled_design_f0ee3a9a-dafc-4427-a6e2-d793cbdc6c9d.jpg?v=1773489247&width=533">
+          <div class="bag-overlay"><h3>Aldo</h3><p>Durable Everyday Icon</p></div>
+        </div>
+        <!-- Duplicates for smooth infinite loop -->
+        <div class="bag-slide">
+          <img src="https://matrixtimepiece.in/cdn/shop/files/9-A_f9a0de9b-3759-4181-8685-e6206607bbed.jpg?v=1784532836&width=533">
+          <div class="bag-overlay"><h3>Patek Philippe</h3><p>Haute Horlogerie Excellence</p></div>
+        </div>
+        <div class="bag-slide">
+          <img src="https://matrixtimepiece.in/cdn/shop/files/17-A_05645942-df49-4ecf-b1d6-1d36b6268ced.jpg?v=1784543385&width=533">
+          <div class="bag-overlay"><h3>Aldo</h3><p>Modern Everyday Style</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="main-footer">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="brand-container" style="margin-bottom:20px;">
+        <div class="logo-circle">T</div>
+        <span class="logo-text" style="color:white;">TIME POINT</span>
+      </div>
+      <p style="color:#888; font-size:14px; line-height:1.6; margin-top:0;">Premium authentic watches curated from Multan. We deliver heritage that lasts generations since 2014.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul class="footer-links">
+        <li><a href="#top">Home</a></li>
+        <li><a href="#about">Artisan Story</a></li>
+        <li><a href="#shop">New Arrivals</a></li>
+        <li><a href="#profile">The Maker</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Customer Support</h4>
+      <ul class="footer-links">
+        <li><a href="#shipment">Shipping Info</a></li>
+        <li><a href="#contact">Contact Support</a></li>
+        <li><a href="#top">Terms & Privacy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>CONTACT</h4>
+      <ul class="footer-links">
+        <li><a class="social-link" href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><path d="M17.5 6.5h.01"></path></svg>
+          Instagram
+        </a></li>
+        <li><a class="social-link" href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg>
+          Facebook
+        </a></li>
+        <li><a class="social-link" href="https://wa.me/923250232003" target="_blank" rel="noopener noreferrer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path></svg>
+          WhatsApp
+        </a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 TIME POINT | Timeless Watch Excellence | Multan, Pakistan</p>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay" onclick="closeAll()"></div>
+
+<aside class="drawer" id="wishlistDrawer">
+  <div class="checkout-header">
+    <h3 style="display:flex; align-items:center; gap:8px;">
+      <svg width="22" height="22" fill="#e63946" stroke="#e63946" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+      Wishlist & Demands
+    </h3>
+    <span onclick="closeAll()" style="cursor:pointer; font-size:24px; font-weight:700;">&times;</span>
+  </div>
+  <div id="wishlistItems" style="flex:1; overflow-y:auto;"></div>
+</aside>
+
+<aside class="drawer" id="cartDrawer">
+  <div class="checkout-header">
+    <h3>Shopping Bag</h3>
+    <span onclick="closeAll()" style="cursor:pointer; font-size:24px; font-weight:700;">&times;</span>
+  </div>
+  <div id="cartItems" style="flex:1; overflow-y:auto;"></div>
+  <div style="border-top:1px solid #eee; padding-top:20px; margin-top:10px;">
+    <div style="display:flex; justify-content:space-between; font-weight:800; margin-bottom:20px; font-size: 20px;">
+      <span>Subtotal:</span><span id="cartTotal">Rs. 0.00</span>
+    </div>
+    <button class="btn-main" onclick="openCheckout()" style="height:52px; font-size:16px;">Secure Checkout</button>
+  </div>
+</aside>
+
+<aside class="drawer" id="checkoutDrawer">
+  <div class="checkout-header">
+    <h3>Checkout</h3>
+    <span onclick="closeAll()" style="cursor:pointer; font-size:24px; font-weight:700;">&times;</span>
+  </div>
+ 
+  <form onsubmit="confirmOrder(event)" style="flex:1; overflow-y:auto; padding-right:5px;">
+    <div class="checkout-section">
+  <div class="form-group-title">Personal Information</div>
+  <input type="text" id="checkoutName" placeholder="Full Name" required>
+  <div class="grid-2">
+    <input type="tel" id="checkoutPhone" placeholder="Phone Number" required>
+    <input type="email" id="checkoutEmail" placeholder="Email Address" required>
+  </div>
+</div>
+
+<div class="checkout-section">
+  <div class="form-group-title">Shipping Details</div>
+  <div class="grid-2">
+    <input type="text" id="checkoutCity" placeholder="City" required>
+    <select id="checkoutProvince" required>
+      <option value="" disabled selected>Province</option>
+      <option>Punjab</option>
+      <option>Sindh</option>
+      <option>KPK</option>
+      <option>Balochistan</option>
+    </select>
+  </div>
+  <textarea id="checkoutAddress" placeholder="Complete Home Address & Landmark" rows="3" required></textarea>
+</div>
+
+<div class="checkout-section">
+  <div class="form-group-title">Payment Method</div>
+  <div class="payment-options">
+    <div class="payment-method-card selected" onclick="selectPayment(this)">
+      <input type="radio" name="pay" value="Cash on Delivery" checked>
+      <div><strong>Cash on Delivery</strong><small style="display:block; color:#666;">Pay at your doorstep.</small></div>
+    </div>
+    <div class="payment-method-card" onclick="selectPayment(this)">
+      <input type="radio" name="pay" value="EasyPaisa / JazzCash">
+      <div><strong>EasyPaisa / JazzCash</strong><small style="display:block; color:#666;">Mobile Wallet Transfer.</small></div>
+    </div>
+  </div>
+</div>
+    <div class="order-summary-box" style="background:#f3efea; padding:15px; border-radius:10px; margin-top:15px;">
+      <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:14px;">
+        <span>Order Amount:</span><span id="summaryTotal">Rs. 0.00</span>
+      </div>
+      <div style="display:flex; justify-content:space-between; font-weight:800; font-size:18px; border-top:1px solid #ddd; padding-top:10px;">
+        <span>Grand Total:</span><span id="summaryGrandTotal">Rs. 0.00</span>
+      </div>
+    </div>
+
+    <button type="submit" class="btn-main" style="margin-top:20px; height:52px; background:var(--leather);">Place Order Now</button>
+  </form>
+</aside>
+
+<div class="product-modal-overlay" id="productModalOverlay" onclick="closeModal()">
+  <div class="product-modal-card" onclick="event.stopPropagation()">
+    <button onclick="closeModal()" style="position:absolute; top:12px; right:12px; background:rgba(0,0,0,0.6); color:white; border:none; border-radius:50%; width:32px; height:32px; cursor:pointer; z-index:10; font-size:20px; display:flex; align-items:center; justify-content:center;">&times;</button>
+    <div style="height:100%; min-height:220px; display:flex; flex-direction:column; background:#f9f8f6;">
+      <div style="flex:1; overflow:hidden;">
+        <img id="modalImg" src="" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+      <div id="modalThumbs" style="display:flex; gap:6px; padding:8px; background:var(--white); overflow-x:auto;"></div>
+    </div>
+    <div style="padding:22px; display:flex; flex-direction:column; justify-content:space-between; overflow-y:auto;">
+      <div>
+        <div style="display:flex; gap:8px; margin-bottom:8px; flex-wrap:wrap;">
+          <span id="modalDemand" class="demand-badge"></span>
+          <span id="modalSold" class="sold-badge"></span>
+        </div>
+        <h2 id="modalTitle" style="margin:5px 0 2px 0; font-size:20px;"></h2>
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+          <div class="rating-stars">★ <span id="modalRating"></span></div>
+          <span id="modalReviews" style="font-size:12px; color:#6b7280;"></span>
+        </div>
+        <div id="modalPrice" style="font-size:22px; font-weight:800; color:var(--leather); margin-bottom:10px;"></div>
+        <p id="modalDesc" style="font-size:13px; color:#4b5563; line-height:1.5; margin-bottom:14px;"></p>
+
+        <div class="form-group-title" style="margin-bottom:8px;">Quantity</div>
+        <div class="qty-stepper">
+          <button type="button" onclick="changeModalQty(-1)">&minus;</button>
+          <span id="modalQty">1</span>
+          <button type="button" onclick="changeModalQty(1)">+</button>
+        </div>
+      </div>
+      <button id="modalAddBtn" class="btn-main">Add to Bag</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast">Added to Bag!</div>
+
+<script>
+// ===== Dark Mode Theme Toggle =====
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  try { localStorage.setItem('T-theme', theme); } catch(e) {}
+}
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  applyTheme(current === 'dark' ? 'light' : 'dark');
+}
+(function initTheme() {
+  let saved = null;
+  try { saved = localStorage.getItem('T-theme'); } catch(e) {}
+  if (saved === 'dark' || saved === 'light') {
+    applyTheme(saved);
+  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    applyTheme('dark');
+  } else {
+    applyTheme('light');
+  }
+})();
+
+const FB_IMG = (id, params) => `https://scontent.fmux1-1.fna.fbcdn.net/v/t39.30808-6/${id}?stp=dst-jpg_tt6&${params}`;
+const FLY1 = (id, params) => `https://scontent.flyp6-1.fna.fbcdn.net/v/t39.30808-6/${id}?stp=dst-jpg_tt6&${params}`;
+const FLY2 = (id, params) => `https://scontent.flyp6-2.fna.fbcdn.net/v/t39.30808-6/${id}?stp=dst-jpg_tt6&${params}`;
+const PRODUCTS = [
+  {id:1, name:'Patek Philippe Calatrava', price:2999, img:'https://images.squarespace-cdn.com/content/v1/512f9596e4b0ed945e3306aa/4e19a493-c25a-45f3-a5a2-46829724051e/Patek+Philippe+Calatrava+6196P+Salmon+Dial+%282%29.jpg', rating:4.7, reviews:73, demand:'🔥 High Demand • 18 viewing', sold:187, desc:'Precision-engineered Patek Philippe Calatrava timepiece featuring a scratch-resistant sapphire crystal and premium finish.'},
+  {id:2, name:'Aldo Classic Steel', price:4500, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmt8ihG3LuAi6M3OuSdGOUGiEi_JGVKIavIBGVdMwFDdEH0icYNr9O6uQ&s=10', rating:4.8, reviews:86, demand:'⚡ Selling Fast • 12 left', sold:224, desc:'Iconic Aldo Classic Steel built for durability, accuracy, and everyday luxury on the wrist.'},
+  {id:3, name:'Patek Philippe Nautilus', price:3990, img:'https://img.everywatch.com/media/2024/11/07/patek-philippe-nautilus-5711-1r-00128354170.jpg', rating:4.8, reviews:99, demand:'🔥 Trending Item', sold:261, desc:'Authentic Patek Philippe Nautilus with a hand-finished dial and a comfortable, secure strap fit.'},
+  {id:4, name:'Aldo Mesh Chronograph', price:5000, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtMsO1bFVL-Aa9Rdz2o4PqVSQtNEOBJEOCQ9ZGOVfORwYnegIJDX70swAQ&s=10', rating:4.9, reviews:112, demand:'⭐ Top Rated • Popular', sold:298, desc:'Elegant Aldo Mesh Chronograph combining classic horology with modern reliability for any occasion.'},
+  {id:5, name:'PATEK PHILIPPE AQUANAUT', price:2200, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3VvVI1M9tjiGd61y6izUy_KvBUQlJutYbaRDYyhBhuA&s=10', rating:4.6, reviews:125, demand:'🔥 High Demand • Limited Batch', sold:335, desc:'Refined Patek Philippe Aquanaut showcasing meticulous craftsmanship and long-lasting mechanical precision.'},
+  {id:7, name:'Patek Philippe Grand Complications', price:2500, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_scpUJLMqfGyjtNiaZWbEnJjqEK4HSbFMsia6ZUpXi94a3Rn74xWL1R4&s=10', rating:4.8, reviews:151, demand:'🔥 Trending • 15 sold today', sold:409, desc:'Precision-engineered Patek Philippe Grand Complications timepiece featuring a scratch-resistant sapphire crystal and premium finish.'},
+  {id:9, name:'Patek Philippe Golden Ellipse', price:3000, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqOPMA7DpLGfjEIjZqhuf4qi63csy-QkVxHwpEx1yWeA&s', rating:4.9, reviews:177, demand:'🔥 High Demand • Fast Shipping', sold:483, desc:'Authentic Patek Philippe Golden Ellipse with a hand-finished dial and a comfortable, secure strap fit.'},
+  {id:11, name:'Patek Philippe Twenty~4', price:4200, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb4GuPGFCCXhoePDZoXxmN3Lsh9dx4Co3mGrc-l4To8MhjvXb_ezuDDD-c&s=10', rating:4.7, reviews:203, demand:'🔥 High Demand • Modern Cut', sold:557, desc:'Refined Patek Philippe Twenty~4 showcasing meticulous craftsmanship and long-lasting mechanical precision.'},
+  {id:13, name:'Patek Philippe Gondolo', price:1999, img:'https://cdn11.bigcommerce.com/s-em951hfz/images/stencil/1280x1280/products/2485/28830/Patek-Philippe-Gondolo-5109G-Breguet-Dial-White-Gold-front-2__21804.1784067694.png?c=2', rating:4.8, reviews:229, demand:'🔥 Popular Choice', sold:631, desc:'Precision-engineered Patek Philippe Gondolo timepiece featuring a scratch-resistant sapphire crystal and premium finish.'},
+  {id:14, name:'Aldo Chrono Steel', price:2499, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTm3OFysQwWOMXEBlDaurc9vcLFzVETq1lF1BYT35djgU5IGpdahyPsukTt&s=10', rating:4.9, reviews:242, demand:'⚡ Limited Stock', sold:668, desc:'Iconic Aldo Chrono Steel built for durability, accuracy, and everyday luxury on the wrist.'},
+  {id:15, name:'PATEK PHILIPPE COMPLICATIONS CHRONO', price:2900, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKK0h9n1KK3nofC1xGy0_pfcvkhXn8FeHiFTYo_D502Q&s', rating:4.6, reviews:255, demand:'🔥 High Demand', sold:705, desc:'Authentic Patek Philippe Complications Chrono with a hand-finished dial and a comfortable, secure strap fit.'},
+  {id:17, name:'Patek Philippe World Time', price:3000, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiPZg1STDB6LQmd6-vsL-Ac9E5vNTBC8xHFfUF4CV17rWl1DZgXAzfNco&s=10', rating:4.8, reviews:281, demand:'🔥 High Demand • Fast Shipping', sold:779, desc:'Refined Patek Philippe World Time showcasing meticulous craftsmanship and long-lasting mechanical precision.'},
+  {id:19, name:'Patek Philippe Perpetual Calendar', price:2500, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl1_u_KdRS0-YAXZzLq_xGan6V1dsNdVpkGGuG28xtSOtUX7bgwxdu4OAm&s=10', rating:4.9, reviews:307, demand:'🔥 Premium Pick', sold:153, desc:'Precision-engineered Patek Philippe Perpetual Calendar timepiece featuring a scratch-resistant sapphire crystal and premium finish.'},
+  {id:21, name:'Patek Philippe Annual Calendar', price:2999, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYXWKzpD-mI6DfHjSLR9BRESLaGOX-gVzHMUV7nUMHo9NGnlOvlMTW6p4R&s=10', rating:4.7, reviews:333, demand:'🔥 High Demand', sold:227, desc:'Authentic Patek Philippe Annual Calendar with a hand-finished dial and a comfortable, secure strap fit.'},
+  {id:22, name:'Aldo Slimline Quartz', price:4250, img:'https://i.ebayimg.com/images/g/tk4AAeSwLDNpj83H/s-l1200.webp', rating:4.8, reviews:346, demand:'⚡ Fast Moving', sold:264, desc:'Elegant Aldo Slimline Quartz combining classic horology with modern reliability for any occasion.'},
+  {id:23, name:'Patek Philippe Sky Moon', price:3600, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaIFE-WLKRM90Ci3YALguoFH9W8hb-0qFZ9_U4zYI5uA&s=10', rating:4.8, reviews:359, demand:'🔥 Limited Edition', sold:301, desc:'Refined Patek Philippe Sky Moon showcasing meticulous craftsmanship and long-lasting mechanical precision.'},
+  {id:25, name:'PATEK PHILIPPE CALATRAVA', price:2500, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXRO0dQyli4-T6t1oBbM3CaOaHfcEkrIzNyuJB00qdSQ&s=10', rating:4.6, reviews:85, demand:'🔥 Daily Favorite', sold:375, desc:'Precision-engineered Patek Philippe Calatrava timepiece featuring a scratch-resistant sapphire crystal and premium finish.'},
+  {id:26, name:'Aldo Classic Steel', price:2600, img:'https://media.6media.me/media/catalog/product/k/y/kyson_brown_200_main_sq_nt_1600x1600.jpg', rating:4.7, reviews:98, demand:'⚡ Best Choice', sold:412, desc:'Iconic Aldo Classic Steel built for durability, accuracy, and everyday luxury on the wrist.'},
+  {id:27, name:'Patek Philippe Nautilus', price:3500, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvro-p_REllhd-YhdkzvRiBuSsWsXnaTAUk-yjN3BnGbQebqSmcqDA0dg&s=10', rating:4.8, reviews:111, demand:'🔥 Top Rated', sold:449, desc:'Authentic Patek Philippe Nautilus with a hand-finished dial and a comfortable, secure strap fit.'},
+  {id:28, name:'Aldo Mesh Chronograph', price:3500, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrQFHWtAx1owD4pvh9-MYYl0ddCvCH9e6zG-v_zTEAJH9Cu0LuyWYI1hU&s=10', rating:4.8, reviews:124, demand:'⭐ High Demand', sold:486, desc:'Elegant Aldo Mesh Chronograph combining classic horology with modern reliability for any occasion.'},
+  {id:29, name:'Patek Philippe Aquanaut', price:3500, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuIsfdylHmCamAOJzpuk5Q-1770J-UXbkhMxW5a6jz5fY-U0UElXHE4-g&s=10', rating:4.9, reviews:137, demand:'🔥 Hot Item', sold:523, desc:'Refined Patek Philippe Aquanaut showcasing meticulous craftsmanship and long-lasting mechanical precision.'},
+  {id:31, name:'Patek Philippe Grand Complications', price:2800, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgENWdDmAaZBLCO6r22x-3XHg4LYZx2dAqeJQ9VdbVR1MXgJ2-YzSHgIci&s=10', rating:4.7, reviews:163, demand:'🔥 Premium Collection', sold:597, desc:'Precision-engineered Patek Philippe Grand Complications timepiece featuring a scratch-resistant sapphire crystal and premium finish.'},
+  ];
+
+const COLLECTION_DATA = {
+  geneve: [
+    {id:401, name:'Patek Philippe Geneve Calatrava', price:4500, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjThKYgG5hT5_X6Qw2tUcywTXexwqTQh9vlbxP_p7upw&s=10', rating:4.9, reviews:187, demand:'🔥 High Demand', sold:410, desc:'The iconic Calatrava — Patek Philippe Genève\'s definition of pure, understated elegance since 1932.'},
+    {id:402, name:'Patek Philippe Geneve Nautilus', price:5200, img:'https://sothebys-com.brightspotcdn.com/dims4/default/9eb7e53/2147483647/strip/true/crop/2500x3333+0+0/resize/1125x1500!/quality/90/?url=http%3A%2F%2Fsothebys-brightspot.s3.amazonaws.com%2Fdotcom%2Fcf%2F0f%2Fb7fa20bd4de8a9588fa99a4c4346%2Fhk1626-dcg3p-t2-en.jpg', rating:5.0, reviews:263, demand:'🔥 Most Wanted', sold:540, desc:'The legendary sports-luxury Nautilus, engineered by Genta and finished entirely in-house in Genève.'},
+    {id:403, name:'Patek Philippe Geneve Aquanaut', price:3400, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZf70nPrLUXE7vgbgtRNUI7ICEFyOJgbDbgPsntuJFrVRtWiecvFvakGk&s=10', rating:4.9, reviews:198, demand:'⚡ Selling Fast', sold:365, desc:'Modern and versatile, the Aquanaut pairs a tropical composite strap with Genève precision engineering.'},
+    {id:404, name:'Patek Philippe Geneve Grand Complications', price:4500, img:'https://k2luxury.ch/watches/wp-content/uploads/2022/08/patek-5207g-002-copy.jpg', rating:5.0, reviews:96, demand:'🔥 Collector\'s Piece', sold:120, desc:'A masterclass in haute horlogerie featuring perpetual calendar and minute repeater functions.'},
+    {id:405, name:'Patek Philippe Geneve Golden Ellipse', price:2900, img:'https://k2luxury.ch/watches/wp-content/uploads/2024/05/patek-5738p-001-Large.jpeg', rating:4.8, reviews:154, demand:'🔥 High Demand', sold:310, desc:'Inspired by the golden ratio, the Ellipse remains one of Genève\'s most distinctive silhouettes.'},
+    {id:406, name:'Patek Philippe Geneve Twenty~4', price:2600, img:'https://www.analogshift.com/cdn/shop/files/AS11985_40930986_PATEKPHILIPPE_TWENTY-4BLUEDIA_7300-1200A-001--5.jpg?v=1777461612&width=1445', rating:4.9, reviews:221, demand:'⭐ Best Seller', sold:478, desc:'A refined ladies\' collection blending contemporary design with traditional Genève craftsmanship.'},
+    {id:407, name:'Patek Philippe Geneve Gondolo', price:3500, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5rEk7oIe0SDpY0AO4kLtqqynbbTthq-t6GkeqvuQqBWuzMUt55qwEfV7l&s=10', rating:4.7, reviews:132, demand:'⚡ Limited Batch', sold:245, desc:'An Art Deco-inspired rectangular case, hand-finished at the Patek Philippe Genève manufacture.'},
+    {id:408, name:'Patek Philippe Geneve World Time', price:6700, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRndr-dfbBD4CUj6I5lcSIa8jUfJ0ctFc7kibcMpMltwKL9am8p1AQemZ2g&s=10', rating:5.0, reviews:109, demand:'🔥 Rare Find', sold:168, desc:'Displays all 24 time zones simultaneously — a Genève specialty since the 1930s.'},
+    {id:409, name:'Patek Philippe Geneve Perpetual Calendar', price:2000, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl1_u_KdRS0-YAXZzLq_xGan6V1dsNdVpkGGuG28xtSOtUX7bgwxdu4OAm&s=10', rating:5.0, reviews:74, demand:'🔥 Ultra Premium', sold:88, desc:'Tracks leap years automatically until 2100, hand-assembled by Genève master watchmakers.'},
+    {id:410, name:'Patek Philippe Geneve Annual Calendar', price:4500, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQUDZySNvDrqOO-YcbJm3izKmouINDJM8187iqmS3u9KTV5OWTzKltVcM&s=10', rating:4.9, reviews:143, demand:'⚡ High Demand', sold:256, desc:'Automatically adjusts for months of 30 and 31 days — only needs correcting once a year.'},
+    {id:411, name:'Patek Philippe Geneve Sky Moon Tourbillon', price:3000, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQeeAZ1pMlwcCwkbZyrNsaGBljHbOlT2IvAnsur4lsqYrSSDynaNj7IK4Y&s=10', rating:5.0, reviews:12, demand:'🔥 Exceptional Rarity', sold:9, desc:'One of the most complicated wristwatches ever made by Patek Philippe Genève, with 12 complications.'},
+    {id:412, name:'Patek Philippe Geneve Complications Chrono', price:4500, img:'https://www.analogshift.com/cdn/shop/files/AS12615_40931091_PATEKPHILIPPE_COMPLICATIONSSALMONDIAL_5172G-010-5.jpg?v=1785323064&width=500', rating:4.8, reviews:167, demand:'🔥 High Demand', sold:289, desc:'A refined chronograph complication showcasing Genève\'s exacting standards of finishing.'},
+    {id:413, name:'Patek Philippe Geneve Nautilus Chronograph', price:3900, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTL8RSgGAvTPFYJmFMxiaKR93gaJTvR15hLKMOT411ntNxXB7ecY9kosEhn&s=10', rating:5.0, reviews:201, demand:'🔥 Trending', sold:334, desc:'Combines the Nautilus\'s sport-luxury silhouette with an integrated flyback chronograph.'},
+    {id:414, name:'Patek Philippe Geneve Calatrava Pilot Travel Time', price:3700, img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2d882BrarENnCogkVCXVIocWEi-aSmc98IiilIG0hf5FPySaVoqDOMKA&s=10', rating:4.9, reviews:118, demand:'⚡ Selling Fast', sold:203, desc:'A dual time-zone pilot\'s watch merging vintage aviation styling with Genève finishing.'}
+  ],
+  watches: [
+    {id:101, name:'Patek Philippe Oyster Perpetual', price:3500, img:'https://matrixtimepiece.in/cdn/shop/files/9-A_f9a0de9b-3759-4181-8685-e6206607bbed.jpg?v=1784532836&width=533', rating:4.9, reviews:154, demand:'🔥 High Demand', sold:480, desc:'Iconic Patek Philippe Oyster Perpetual with polished stainless steel casing and instant recognition.'},
+    {id:102, name:'Aldo Mesh Chronograph', price:3900, img:'https://matrixtimepiece.in/cdn/shop/files/10-A_737bc66e-7ae6-41a6-a3c4-ac6d3ee345e4.jpg?v=1772168358&width=533', rating:4.8, reviews:112, demand:'⚡ Selling Fast', sold:320, desc:'Matte black Aldo Mesh Chronograph timepiece with minimal, refined dial design.'},
+    {id:103, name:'Patek Philippe Eco-Drive Classic', price:2900, img:'https://matrixtimepiece.in/cdn/shop/files/13-A_f48c1d64-d12b-4c66-9293-cc8aac5cf6b3.jpg?v=1784374000&width=533', rating:4.9, reviews:98, demand:'🔥 High Demand', sold:295, desc:'Aged brown-dial Patek Philippe Eco-Drive with light-powered movement and antique brass bezel.'},
+    {id:104, name:'Aldo Urban Sport', price:5900, img:'https://matrixtimepiece.in/cdn/shop/files/12-A_71fc0c5e-648c-4915-9cf1-500adcf34301.jpg?v=1784375073&width=533', rating:4.7, reviews:76, demand:'⚡ High Demand', sold:210, desc:'Minimalist dark slate Aldo Urban Sport built for shock and water resistance.'},
+    {id:105, name:'Patek Philippe Cosmograph Daytona', price:2600, img:'https://matrixtimepiece.in/cdn/shop/files/17-A_05645942-df49-4ecf-b1d6-1d36b6268ced.jpg?v=1784543385&width=533', rating:5.0, reviews:210, demand:'🔥 Top Rated', sold:530, desc:'Luxury multi-dial Patek Philippe Cosmograph Daytona chronograph for the ultimate collector.'},
+    {id:106, name:'Patek Philippe Golden Ellipse', price:2500, img:'https://matrixtimepiece.in/cdn/shop/files/15-A_ab458079-5053-47b3-a920-c9ad97b9b828.jpg?v=1772104491&width=533', rating:4.9, reviews:135, demand:'🔥 High Demand', sold:340, desc:'Premium gold-accented Patek Philippe Golden Ellipse with a striking black dial.'},
+    {id:107, name:'Aldo Slimline Quartz', price:4200, img:'https://matrixtimepiece.in/cdn/shop/files/23-A_2108edf2-04c1-4e5b-841d-59af3406f04c.jpg?v=1772099956&width=533', rating:4.6, reviews:64, demand:'⚡ Soft Touch', sold:190, desc:'Smooth-finish Aldo Slimline Quartz crafted for everyday comfort and style.'},
+    {id:108, name:'Aldo Weekend Casual', price:4500, img:'https://matrixtimepiece.in/cdn/shop/files/Untitled_design_f0ee3a9a-dafc-4427-a6e2-d793cbdc6c9d.jpg?v=1773489247&width=533', rating:4.8, reviews:105, demand:'🔥 Durable Build', sold:275, desc:'Rugged tactical Aldo Weekend Casual built for outdoor durability and precision.'},
+    {id:109, name:'Patek Philippe Explorer II', price:2500, img:'https://matrixtimepiece.in/cdn/shop/files/DD-66.jpg?v=1756208326&width=533', rating:4.9, reviews:88, demand:'⭐ Unique Edition', sold:215, desc:'Deep navy-dial Patek Philippe Explorer II paired with a hand-finished stainless bracelet.'}
+  ],
+  straps: [
+    {id:201, name:'Patek Philippe Formal Leather Strap', price:3690, img:'https://mender.pk/wp-content/uploads/2026/05/IMG_3024-400x400.jpg', rating:4.9, reviews:230, demand:'🔥 Best Seller', sold:890, desc:'Sleek 20mm formal leather watch strap with a solid brass Patek Philippe-style buckle.'},
+    {id:202, name:'Aldo Casual Sport Strap', price:2690, img:'https://mender.pk/wp-content/uploads/2026/05/IMG_3022-800x1200.jpg', rating:4.7, reviews:140, demand:'⚡ High Demand', sold:520, desc:'Heavy duty casual watch strap made from a single piece of unlined leather.'},
+    {id:203, name:'Patek Philippe Woven Strap', price:3800, img:'https://mender.pk/wp-content/uploads/2026/05/IMG_3025-400x400.jpg', rating:4.8, reviews:92, demand:'🔥 High Demand', sold:310, desc:'Hand-woven leather pattern watch strap with a vintage brass buckle.'},
+    {id:204, name:'Aldo Heavy Duty Strap', price:2400, img:'https://mender.pk/wp-content/uploads/2026/05/IMG_3031-400x400.jpg', rating:5.0, reviews:180, demand:'🔥 Ultra Tough', sold:450, desc:'Extremely solid full-grain watch strap built to endure lifetimes of wear.'},
+    {id:205, name:'Patek Philippe Mocha Brown Strap', price:2850, img:'https://mender.pk/wp-content/uploads/2024/09/Camel-Brown-Plain-Leather-Belt-1.5-Inches-Wide-768x768.jpg', rating:4.7, reviews:88, demand:'⚡ Warm Tones', sold:260, desc:'Warm mocha brown smooth leather watch strap suitable for any dial.'},
+    {id:206, name:'Patek Philippe Tan Strap', price:3400, img:'https://mender.pk/wp-content/uploads/2024/09/Men-and-Women-Exotic-Ostrich-Texture-Cow-Leather-Belt-1.5-Inches-Wide-768x768.jpg', rating:4.8, reviews:110, demand:'🔥 Double Stitched', sold:380, desc:'Classic tan watch strap featuring double contrast border stitching.'},
+    {id:207, name:'Aldo Reversible Strap', price:2850, img:'https://mender.pk/wp-content/uploads/2024/09/Men-and-Women-Mint-Green-Genuine-Leather-Belt-768x768.jpg', rating:4.9, reviews:195, demand:'⭐ 2-in-1 Design', sold:620, desc:'Quick-release buckle allowing instant switch between Black and Brown sides.'},
+    {id:208, name:'Patek Philippe Western Pattern Strap', price:2970, img:'https://mender.pk/wp-content/uploads/2024/09/Maroon-Premium-Cow-Leather-Belt-1.5-Inches-Wide-Unisex-768x768.jpg', rating:4.8, reviews:130, demand:'🔥 Engraved Hardware', sold:390, desc:'Authentic engraved antique silver buckle with floral embossed leather strap.'},
+    {id:209, name:'Aldo Braided Flex Strap', price:1950, img:'https://mender.pk/wp-content/uploads/2022/03/23-1-768x768.png', rating:4.7, reviews:75, demand:'⚡ Flexible Comfort', sold:230, desc:'Stretchable woven leather construction for ultimate wrist flexibility.'}
+  ],
+  boxes: [
+    {id:301, name:'Patek Philippe Slim Travel Box', price:2750, img:'https://mender.pk/wp-content/uploads/2025/06/Raw-Leather-Bi-Fold-Wallet-%E2%80%93-Crazy-Horse-Article-800x800.jpg', rating:4.9, reviews:310, demand:'🔥 Customer Favorite', sold:1120, desc:'Modern slim watch travel case holding up to 4 timepieces securely.'},
+    {id:302, name:'Patek Philippe Travel Case', price:5350, img:'https://mender.pk/wp-content/uploads/2024/10/RFID-WALLET-800x800.jpg', rating:4.8, reviews:160, demand:'⚡ Travel Essential', sold:490, desc:'All-in-one travel watch case with cushioned compartments for safe transport.'},
+    {id:303, name:'Aldo Heritage Watch Box', price:3600, img:'https://mender.pk/wp-content/uploads/2024/09/Simple-NoFlap-Wallet-in-Black-800x800.jpg', rating:4.9, reviews:420, demand:'🔥 #1 Choice', sold:1350, desc:'Traditional double-slot heritage watch box with velvet-lined interior.'},
+    {id:304, name:'Aldo Compact Watch Pouch', price:2000, img:'https://mender.pk/wp-content/uploads/2021/05/9-800x800.png', rating:4.7, reviews:190, demand:'⚡ Ultra Compact', sold:610, desc:'Ultra-thin compact watch pouch with pull-tab quick access.'},
+    {id:305, name:'Patek Philippe Presentation Box', price:6500, img:'https://mender.pk/wp-content/uploads/2021/04/IMG_2878-800x533.jpg', rating:4.9, reviews:145, demand:'🔥 Special Dye', sold:430, desc:'Unique hunter-green vegetable-tanned presentation box for luxury watches.'},
+    {id:306, name:'Patek Philippe Zippered Case', price:4950, img:'https://mender.pk/wp-content/uploads/2026/03/JJ-WALLET-IMGS-5-800x800.jpg', rating:4.8, reviews:115, demand:'⚡ Full Zip', sold:320, desc:'Spacious zippered watch organizer holding up to 12 timepieces.'},
+    {id:307, name:'Aldo Carbon Hybrid Box', price:3350, img:'https://mender.pk/wp-content/uploads/2021/01/12-800x800.png', rating:4.7, reviews:88, demand:'🔥 Modern Hybrid', sold:280, desc:'Real carbon fiber accent watch box merged with saddle-stitched leather.'},
+    {id:308, name:'Aldo Vintage Tri-Slot Box', price:2950, img:'https://mender.pk/wp-content/uploads/2021/01/15-800x800.png', rating:4.8, reviews:130, demand:'⚡ Max Capacity', sold:410, desc:'Roomy 3-slot watch box with a clear display window and coin zipper.'},
+    {id:309, name:'Patek Philippe Magnetic Watch Case', price:4450, img:'https://mender.pk/wp-content/uploads/2025/03/Long-Coat-Wallet-5-800x800.jpg', rating:4.9, reviews:210, demand:'🔥 Magnetic Grip', sold:740, desc:'Secure magnetic-clasp watch case with 4 individual cushioned slots.'}
+  ]
+};
+
+let cart = [];
+let wishlist = [1, 4, 101];
+let currentModalProduct = null;
+let modalQty = 1;
+
+function renderProducts() {
+  document.getElementById('productsGrid').innerHTML = PRODUCTS.map(p => {
+    const isFav = wishlist.includes(p.id);
+    return `
+      <div class="card">
+        <button class="heart-btn ${isFav ? 'active' : ''}" onclick="toggleWishlist(${p.id})">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+        </button>
+        <div class="card-img" onclick="showProductDetails(${p.id})"><img src="${p.img}" alt="${p.name}"></div>
+        <div style="display:flex; justify-content:center; gap:6px; margin-bottom:5px;">
+          <span class="rating-stars">★ ${p.rating}</span>
+          <span style="font-size:11px; color:#9ca3af;">(${p.reviews})</span>
+        </div>
+        <h3>${p.name}</h3>
+        <div style="margin:4px 0; display:flex; flex-direction:column; gap:3px; align-items:center;">
+          <span class="demand-badge">${p.demand}</span>
+          <span class="sold-badge">📦 ${p.sold}+ Sold</span>
+        </div>
+        <span class="price">Rs. ${p.price}</span>
+        <div style="display:grid; grid-template-columns: 1fr auto; gap:8px;">
+          <button class="btn-main" onclick="addToCartById(${p.id})">Add to Bag</button>
+          <button onclick="showProductDetails(${p.id})" style="background:#f3efea; color:var(--leather); border-radius:8px; padding:0 12px; font-weight:700;">Details</button>
+        </div>
+      </div>`;
+  }).join('');
+  updateWishlistUI();
+}
+
+const COLLECTION_TITLES = {
+  watches: 'Luxury Watches',
+  geneve: 'Patek Philippe Genève',
+  straps: 'Premium Watch Straps',
+  boxes: 'Artisan Watch Boxes'
+};
+
+function openCollection(cat) {
+  document.getElementById('collectionMain').style.display = 'none';
+  document.getElementById('collectionViewer').style.display = 'block';
+  document.getElementById('colTitle').textContent = (COLLECTION_TITLES[cat] || (cat.charAt(0).toUpperCase() + cat.slice(1))) + ' Collection';
+  const items = COLLECTION_DATA[cat] || [];
+  document.getElementById('collectionGrid').innerHTML = items.map(p => {
+    const isFav = wishlist.includes(p.id);
+    return `
+      <div class="card">
+        <button class="heart-btn ${isFav ? 'active' : ''}" onclick="toggleWishlist(${p.id})">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+        </button>
+        <div class="card-img" onclick="showProductDetails(${p.id})"><img src="${p.img}" alt="${p.name}"></div>
+        <div style="display:flex; justify-content:center; gap:6px; margin-bottom:5px;">
+          <span class="rating-stars">★ ${p.rating}</span>
+          <span style="font-size:11px; color:#9ca3af;">(${p.reviews})</span>
+        </div>
+        <h3>${p.name}</h3>
+        <div style="margin:4px 0; display:flex; flex-direction:column; gap:3px; align-items:center;">
+          <span class="demand-badge">${p.demand}</span>
+          <span class="sold-badge">📦 ${p.sold}+ Sold</span>
+        </div>
+        <span class="price">Rs. ${p.price}</span>
+        <div style="display:grid; grid-template-columns: 1fr auto; gap:8px;">
+          <button class="btn-main" onclick="addToCartById(${p.id})">Add to Bag</button>
+          <button onclick="showProductDetails(${p.id})" style="background:#f3efea; color:var(--leather); border-radius:8px; padding:0 12px; font-weight:700;">Details</button>
+        </div>
+      </div>`;
+  }).join('');
+  document.getElementById('collections').scrollIntoView({ behavior: 'smooth' });
+}
+
+function closeCollection() {
+  document.getElementById('collectionViewer').style.display = 'none';
+  document.getElementById('collectionMain').style.display = 'block';
+}
+
+function showProductDetails(id) {
+  const p = PRODUCTS.find(i => i.id === id) || Object.values(COLLECTION_DATA).flat().find(i => i.id === id);
+  if(!p) return;
+  currentModalProduct = p;
+  modalQty = 1;
+  document.getElementById('modalQty').textContent = modalQty;
+  document.getElementById('modalImg').src = p.img;
+  document.getElementById('modalTitle').textContent = p.name;
+  document.getElementById('modalPrice').textContent = `Rs. ${p.price}`;
+  document.getElementById('modalRating').textContent = p.rating;
+  document.getElementById('modalReviews').textContent = `(${p.reviews} verified reviews)`;
+  document.getElementById('modalDemand').textContent = p.demand;
+  document.getElementById('modalSold').textContent = `📦 ${p.sold}+ Sold`;
+  document.getElementById('modalDesc').textContent = p.desc;
+  document.getElementById('modalAddBtn').onclick = function() { addToCartById(p.id, modalQty); closeModal(); };
+  document.getElementById('productModalOverlay').classList.add('open');
+}
+
+function changeModalQty(delta) {
+  modalQty = Math.max(1, modalQty + delta);
+  document.getElementById('modalQty').textContent = modalQty;
+}
+
+function closeModal() { document.getElementById('productModalOverlay').classList.remove('open'); }
+
+function toggleWishlist(id) {
+  if(wishlist.includes(id)) {
+    wishlist = wishlist.filter(i => i !== id);
+    showToast('Removed from Favorites');
+  } else {
+    wishlist.push(id);
+    showToast('Added to Favorites ❤️');
+  }
+  renderProducts();
+}
+
+function updateWishlistUI() {
+  document.getElementById('wishlistCount').textContent = wishlist.length;
+  const allProds = [...PRODUCTS, ...Object.values(COLLECTION_DATA).flat()];
+  const favItems = allProds.filter(p => wishlist.includes(p.id));
+ 
+  document.getElementById('wishlistItems').innerHTML = favItems.length === 0 ?
+    '<p style="text-align:center; padding:30px; color:#9ca3af;">No favorites added yet.</p>' :
+    favItems.map(p => `
+      <div style="display:flex; gap:12px; margin-bottom:12px; background:#fcf8f2; padding:10px; border-radius:8px; align-items:flex-start;">
+        <img src="${p.img}" style="width:60px; height:60px; object-fit:cover; border-radius:6px; flex-shrink:0;">
+        <div style="flex:1;">
+          <div style="font-weight:700; font-size:14px;">${p.name}</div>
+          <div style="color:var(--leather); font-weight:800; margin-top:2px;">Rs. ${p.price}</div>
+        </div>
+        <div class="wishlist-item-actions">
+          <button onclick="addToCartById(${p.id})" style="background:#f3efea; color:var(--leather); border:1px solid var(--leather); border-radius:6px; padding:5px 8px; font-size:11px; font-weight:700;">Add</button>
+          <button onclick="toggleWishlist(${p.id})" style="background:#fee2e2; color:#dc2626; border:1px solid #fecdd3; border-radius:6px; padding:5px 8px; font-size:11px; font-weight:700;">&times;</button>
+        </div>
+      </div>`).join('');
+}
+
+function addToCartById(id, qty) {
+  qty = qty || 1;
+  const p = PRODUCTS.find(i => i.id === id) || Object.values(COLLECTION_DATA).flat().find(i => i.id === id);
+  if(p) {
+    for(let i = 0; i < qty; i++) { cart.push(p); }
+    updateCartUI();
+    showToast(qty > 1 ? `Added ${qty} to Bag!` : 'Added to Bag!');
+  }
+}
+
+function updateCartUI() {
+  document.getElementById('cartCount').textContent = cart.length;
+  let total = 0;
+  const grouped = [];
+  cart.forEach(item => {
+    const existing = grouped.find(g => g.id === item.id);
+    if(existing) { existing.qty += 1; } else { grouped.push({ ...item, qty: 1 }); }
+  });
+
+  document.getElementById('cartItems').innerHTML = grouped.length === 0 ?
+    '<p style="text-align:center; padding:30px; color:#9ca3af;">Your bag is empty.</p>' :
+    grouped.map((item) => {
+      total += item.price * item.qty;
+      return `
+        <div style="display:flex; gap:10px; margin-bottom:14px; align-items:center;">
+          <img src="${item.img}" style="width:50px; height:50px; object-fit:cover; border-radius:6px;">
+          <div style="flex:1;">
+            <div style="font-weight:700; font-size:14px;">${item.name}</div>
+            <div style="color:var(--leather); font-weight:700; font-size:13px;">Rs. ${item.price}</div>
+          </div>
+          <div class="qty-stepper" style="margin-bottom:0;">
+            <button type="button" onclick="changeCartQty(${item.id}, -1)">&minus;</button>
+            <span>${item.qty}</span>
+            <button type="button" onclick="changeCartQty(${item.id}, 1)">+</button>
+          </div>
+        </div>`;
+    }).join('');
+
+  document.getElementById('cartTotal').textContent = `Rs. ${total.toFixed(2)}`;
+  document.getElementById('summaryTotal').textContent = `Rs. ${total.toFixed(2)}`;
+  document.getElementById('summaryGrandTotal').textContent = `Rs. ${total.toFixed(2)}`;
+}
+
+function changeCartQty(id, delta) {
+  if(delta > 0) {
+    const p = PRODUCTS.find(i => i.id === id) || Object.values(COLLECTION_DATA).flat().find(i => i.id === id);
+    if(p) cart.push(p);
+  } else {
+    const idx = cart.findIndex(i => i.id === id);
+    if(idx > -1) cart.splice(idx, 1);
+  }
+  updateCartUI();
+}
+
+function openDrawer(id) { document.getElementById(id).classList.add('open'); document.getElementById('overlay').classList.add('open'); }
+function closeAll() { document.querySelectorAll('.drawer, .overlay').forEach(el => el.classList.remove('open')); closeModal(); closeNav(); }
+function openCheckout() { if(cart.length > 0) { closeAll(); openDrawer('checkoutDrawer'); } else { showToast('Your bag is empty!'); } }
+function showToast(msg) { const t = document.getElementById('toast'); t.textContent = msg; t.style.display = 'block'; setTimeout(() => t.style.display = 'none', 2000); }
+function confirmOrder(e) {
+  e.preventDefault();
+
+  const name = document.getElementById('checkoutName').value;
+  const phone = document.getElementById('checkoutPhone').value;
+  const email = document.getElementById('checkoutEmail').value;
+  const city = document.getElementById('checkoutCity').value;
+  const province = document.getElementById('checkoutProvince').value;
+  const address = document.getElementById('checkoutAddress').value;
+  const payment = document.querySelector('input[name="pay"]:checked').value;
+
+  let total = 0;
+  const grouped = [];
+  cart.forEach(item => {
+    const existing = grouped.find(g => g.id === item.id);
+    if (existing) { existing.qty += 1; } else { grouped.push({ ...item, qty: 1 }); }
+  });
+
+  let itemsText = '';
+  grouped.forEach(item => {
+    total += item.price * item.qty;
+    itemsText += `- ${item.name} x${item.qty} = Rs. ${(item.price * item.qty).toFixed(2)}\n`;
+  });
+
+  const message =
+    `🛍️ New Order - Joni Baba Store\n\n` +
+    `Name: ${name}\n` +
+    `Phone: ${phone}\n` +
+    `Email: ${email}\n` +
+    `City: ${city}\n` +
+    `Province: ${province}\n` +
+    `Address: ${address}\n` +
+    `Payment: ${payment}\n\n` +
+    `Order Items:\n${itemsText}\n` +
+    `Total: Rs. ${total.toFixed(2)}`;
+
+  // WhatsApp pe order details bhejna (aap ka number)
+  const whatsappURL = `https://wa.me/923136024723?text=${encodeURIComponent(message)}`;
+  window.open(whatsappURL, '_blank');
+
+  alert("Order Placed Successfully! ✅");
+  cart = [];
+  updateCartUI();
+  closeAll();
+  e.target.reset();
+}
+function selectPayment(el) { document.querySelectorAll('.payment-method-card').forEach(c => c.classList.remove('selected')); el.classList.add('selected'); el.querySelector('input').checked = true; }
+
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+  document.getElementById('hamburgerBtn').classList.toggle('open');
+}
+function closeNav() {
+  document.getElementById('navLinks').classList.remove('open');
+  document.getElementById('hamburgerBtn').classList.remove('open');
+}
+
+const magicCircle = document.getElementById('magicCircle');
+const tiltImages = document.querySelectorAll('.tilt-img');
+if(magicCircle) {
+  magicCircle.addEventListener('mousemove', (e) => {
+    const rect = magicCircle.getBoundingClientRect();
+    const x = (e.clientX - rect.left - rect.width / 2) / 10;
+    const y = (e.clientY - rect.top - rect.height / 2) / 10;
+    tiltImages.forEach(img => { img.style.transform = `translate(${x}px, ${y}px) scale(1.1)`; });
+  });
+  magicCircle.addEventListener('mouseleave', () => { tiltImages.forEach(img => { img.style.transform = `translate(0, 0) scale(1)`; }); });
+}
+
+const slides = document.querySelectorAll('.slide');
+let currentSlide = 0;
+if(slides.length > 0) {
+  setInterval(() => {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add('active');
+  }, 4000);
+}
+
+renderProducts();
+</script>
+</body>
+</html>
